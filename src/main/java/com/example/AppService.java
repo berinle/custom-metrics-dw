@@ -1,10 +1,8 @@
 package com.example;
 
-import com.example.instrumentation.TimedListener;
 import com.yammer.dropwizard.Service;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
-import com.yammer.metrics.Metrics;
 
 /**
  * @author berinle
@@ -18,7 +16,6 @@ public class AppService extends Service<AppConfiguration> {
     public void run(AppConfiguration configuration, Environment environment) throws Exception {
         final AppResource appResource = new AppResource(new BarService());
         environment.addResource(appResource);
-        new TimedListener(Metrics.defaultRegistry());
     }
 
     /**
